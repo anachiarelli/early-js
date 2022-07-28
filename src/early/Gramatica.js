@@ -16,7 +16,7 @@ function Gramatica(props) {
             <p>V = {"{"} {Array.from(props.variaveis).map(v => `'${v}'`).join(', ')} {"}"} </p>
             <p>T = {"{"} {Array.from(props.terminais).map(t => `'${t}'`).join(', ')} {"}"}</p>
             <p>P = {"{"} {transformarRegrasDeProducaoEmRepresentacaoVisual(props.regrasDeProducao)} {"}"}</p>
-            <p>S = '{props.simboloInicial}'</p>
+            <p>S = {props.simboloInicial}</p>
         </div>
     );
 }

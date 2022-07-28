@@ -51,8 +51,9 @@ function inferirVariaveisETerminais(regrasDeProducao, simboloInicial) {
 }
 
 function App() {
-  const [simboloInicial, setSimboloInicial] = useState('S')
-  const [regrasDeProducao, setRegrasDeProducao] = useState({S:['a']})
+  const [simboloInicial, setSimboloInicial] = useState('')
+  const [regrasDeProducao, setRegrasDeProducao] = useState({})
+  const [palavra, setPalavra] = useState('')
 
   const atualizarRegrasDeProducao = (texto) => {
     console.log("x");
@@ -73,6 +74,8 @@ function App() {
               setSimboloInicial={setSimboloInicial}
               regrasDeProducao={transformarRegrasDeProducaoEmTexto(regrasDeProducao)}
               setRegrasDeProducao={atualizarRegrasDeProducao}
+              palavra={palavra}
+              setPalavra={setPalavra}
             />
           </div>
           <div className="col col-lg-6">
