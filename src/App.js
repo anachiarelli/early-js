@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Formulario from './early/Formulario';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="navbar navbar-dark bg-primary">&nbsp;</nav>
+      <div className="container">
+        <h1 className="my-3 pb-3 border-bottom">Early Parser</h1>
+        <div className="row">
+          <div className="col col-lg-6">
+            <Formulario />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
