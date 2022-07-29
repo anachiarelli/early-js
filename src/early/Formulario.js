@@ -75,18 +75,19 @@ function Formulario(props) {
     console.log(erroSimboloInicial);
     return (
         <div>
-            <label className="form-label text-start mt-4 h4">Símbolo inicial</label>
+            <p>
+                <button type="button" className="btn btn-link p-0" onClick={handleExemploClique}>Preencher os campos com um exemplo</button>
+            </p>
+            <label className="form-label text-start h4">Símbolo inicial</label>
             <input className="form-control" placeholder="Insira o símbolo inicial (apenas um caracter)" value={simboloInicial} onChange={e => handleSimboloInicialChange(e.target.value)}/>
             {erroSimboloInicial !== "" ? <div className="text-danger">{erroSimboloInicial}</div> : ""}
             <label className="form-label text-start mt-4 h4">Regras de produção</label>
             <textarea className="form-control" placeholder="Insira as regras de produção, uma por linha" value={regrasDeProducao} onChange={e => handleRegrasDeProducaoChange(e.target.value)}/>
             {erroRegrasDeProducao !== "" ? <div className="text-danger">{erroRegrasDeProducao}</div> : ""}
-            <p className="m-0"><a href="">Clique aqui</a> para saber como inserir sua gramática corretamente</p>
             <label className="form-label text-start mt-4 h4">Palavra a ser reconhecida</label>
             <input className="form-control" placeholder="Insira uma palavra" value={palavra} onChange={e=>handlePalavraChange(e.target.value)}/>
             {erroPalavra !== "" ? <div className="text-danger">{erroPalavra}</div> : ""}
             <button className="btn btn-primary mt-4 mb-1" type="button" onClick={handleBotaoClique}>Tudo pronto! Executar Early Parser</button>
-            <p className="">Ao invés disso, <button type="button" className="btn btn-link" onClick={handleExemploClique}>preencher os campos com uma gramática de exemplo</button></p>
         </div>
     );
 }

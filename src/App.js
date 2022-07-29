@@ -73,7 +73,7 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-dark bg-primary">&nbsp;</nav>
       <div className="container">
-        <h1 className="my-3 pb-3 border-bottom">Early Parser</h1>
+        <h1 className="my-3 pb-3 border-bottom">Algoritmo de Early</h1>
         <div className="row">
           <div className="col col-lg-6">
             <Formulario
@@ -95,7 +95,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-4 border-top pt-4">
           {dominios.map((dominio, i) => (
             <div className="col-lg-3 pb-4 col-md-3">
               <Dominio indice={i} regras={dominio} key={i}/>
