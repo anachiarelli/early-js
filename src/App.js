@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Formulario from './early/Formulario';
 import Gramatica from './early/Gramatica';
+import reconhecerPalavra from './early/Algoritmo';
 
 function transformarRegrasDeProducaoEmTexto(regrasDeProducao) {
   let texto = '';
@@ -51,16 +52,20 @@ function inferirVariaveisETerminais(regrasDeProducao, simboloInicial) {
 }
 
 function App() {
-  const [simboloInicial, setSimboloInicial] = useState('')
-  const [regrasDeProducao, setRegrasDeProducao] = useState({})
-  const [palavra, setPalavra] = useState('')
+  const [simboloInicial, setSimboloInicial] = useState('');
+  const [regrasDeProducao, setRegrasDeProducao] = useState({});
+  const [palavra, setPalavra] = useState('');
+  const [palavraReconhecida, setPalavraReconhecida] = useState(null);
+
+  const [variaveis, terminais] = inferirVariaveisETerminais(regrasDeProducao, simboloInicial);
 
   const atualizarRegrasDeProducao = (texto) => {
-    console.log("x");
     setRegrasDeProducao(transformarTextoEmRegrasDeProducao(texto));
   }
 
-  const [variaveis, terminais] = inferirVariaveisETerminais(regrasDeProducao, simboloInicial);
+  const executarAlgoritmo = () => {
+    setPalavraReconhecida(reconhecerPalavra(palavra, variaveis, terminais, regrasDeProducao, simboloInicial));
+  }
 
   return (
     <div className="App">
@@ -76,6 +81,7 @@ function App() {
               setRegrasDeProducao={atualizarRegrasDeProducao}
               palavra={palavra}
               setPalavra={setPalavra}
+              executarAlgoritmo={executarAlgoritmo}
             />
           </div>
           <div className="col col-lg-6">
@@ -86,6 +92,9 @@ function App() {
               simboloInicial={simboloInicial}
             />
           </div>
+        </div>
+        <div className="row">
+          <p>{palavraReconhecida == null ? '' : palavraReconhecida ? "Palavra reconhecida" : "Palavra não reconhecida"}</p>
         </div>
       </div>
     </div>
