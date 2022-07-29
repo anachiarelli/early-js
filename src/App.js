@@ -97,13 +97,18 @@ function App() {
         </div>
         <div className="row">
           {dominios.map((dominio, i) => (
-            <div className="col-lg-3 pb-4">
+            <div className="col-lg-3 pb-4 col-md-3">
               <Dominio indice={i} regras={dominio} key={i}/>
             </div>
           ))}
         </div>
         <div className="row">
-          <p>{palavraReconhecida == null ? '' : palavraReconhecida ? "Palavra reconhecida" : "Palavra não reconhecida"}</p>
+          <p>{
+            palavraReconhecida == null 
+              ? ''
+              : palavraReconhecida 
+                ? <div className="alert alert-success">Palavra reconhecida</div>
+                : <div className="alert alert-danger">Palavra não reconhecida</div>}</p>
         </div>
       </div>
     </div>
