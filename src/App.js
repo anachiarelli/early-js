@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Formulario from './early/Formulario';
 import Gramatica from './early/Gramatica';
 import reconhecerPalavra from './early/Algoritmo';
+import Dominio from './early/Dominio';
 
 function transformarRegrasDeProducaoEmTexto(regrasDeProducao) {
   let texto = '';
@@ -56,6 +57,7 @@ function App() {
   const [regrasDeProducao, setRegrasDeProducao] = useState({});
   const [palavra, setPalavra] = useState('');
   const [palavraReconhecida, setPalavraReconhecida] = useState(null);
+  const [dominios, setDominios] = useState([]);
 
   const [variaveis, terminais] = inferirVariaveisETerminais(regrasDeProducao, simboloInicial);
 
@@ -64,7 +66,7 @@ function App() {
   }
 
   const executarAlgoritmo = () => {
-    setPalavraReconhecida(reconhecerPalavra(palavra, variaveis, terminais, regrasDeProducao, simboloInicial));
+    setPalavraReconhecida(reconhecerPalavra(palavra, variaveis, terminais, regrasDeProducao, simboloInicial, setDominios));
   }
 
   return (
@@ -92,6 +94,13 @@ function App() {
               simboloInicial={simboloInicial}
             />
           </div>
+        </div>
+        <div className="row">
+          {dominios.map((dominio, i) => (
+            <div className="col-lg-3 pb-4">
+              <Dominio indice={i} regras={dominio} key={i}/>
+            </div>
+          ))}
         </div>
         <div className="row">
           <p>{palavraReconhecida == null ? '' : palavraReconhecida ? "Palavra reconhecida" : "Palavra não reconhecida"}</p>

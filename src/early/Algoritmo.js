@@ -9,13 +9,21 @@ class ArraySet extends Set {
     }
 }
 
-function reconhecerPalavra(palavra, V, T, P, S) {
+function sleep(t) {
+    return new Promise((resolve) => setTimeout(resolve, t));
+}
+
+function reconhecerPalavra(palavra, V, T, P, S, setDominios) {
     const n = palavra.length;
     const dominios = [];
     dominios.push(construirD0(V, T, P, S));
+    setDominios(dominios);
+
     for (let i = 0; i < n; i++) {
         dominios.push(construirDr(V, T, P, S, dominios, palavra[i]));
+        setDominios(dominios);
     }
+
 
     for (let producao of dominios[n][''] ?? []) {
         if (producao[0] === S && producao[3] === 0) {
